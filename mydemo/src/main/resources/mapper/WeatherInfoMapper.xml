@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mydemo.mapper.WeatherInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.mydemo.domain.WeatherInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="Dn" jdbcType="VARCHAR" property="dn" />
+    <result column="Dm" jdbcType="VARCHAR" property="dm" />
+    <result column="Dx" jdbcType="VARCHAR" property="dx" />
+    <result column="Sn" jdbcType="VARCHAR" property="sn" />
+    <result column="Sm" jdbcType="VARCHAR" property="sm" />
+    <result column="Sx" jdbcType="VARCHAR" property="sx" />
+    <result column="Ta" jdbcType="VARCHAR" property="ta" />
+    <result column="Ua" jdbcType="VARCHAR" property="ua" />
+    <result column="Pa" jdbcType="VARCHAR" property="pa" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, Dn, Dm, Dx, Sn, Sm, Sx, Ta, Ua, Pa
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_weatherinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByAll" resultMap="BaseResultMap">
+    select * from t_weatherinfo
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_weatherinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.mydemo.domain.WeatherInfo">
+    insert into t_weatherinfo (id, Dn, Dm, Dx, 
+      Sn, Sm, Sx, Ta, 
+      Ua, Pa)
+    values (#{id,jdbcType=INTEGER}, #{dn,jdbcType=VARCHAR}, #{dm,jdbcType=VARCHAR}, #{dx,jdbcType=VARCHAR}, 
+      #{sn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{sx,jdbcType=VARCHAR}, #{ta,jdbcType=VARCHAR}, 
+      #{ua,jdbcType=VARCHAR}, #{pa,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.mydemo.domain.WeatherInfo">
+    insert into t_weatherinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dn != null">
+        Dn,
+      </if>
+      <if test="dm != null">
+        Dm,
+      </if>
+      <if test="dx != null">
+        Dx,
+      </if>
+      <if test="sn != null">
+        Sn,
+      </if>
+      <if test="sm != null">
+        Sm,
+      </if>
+      <if test="sx != null">
+        Sx,
+      </if>
+      <if test="ta != null">
+        Ta,
+      </if>
+      <if test="ua != null">
+        Ua,
+      </if>
+      <if test="pa != null">
+        Pa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dn != null">
+        #{dn,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null">
+        #{dm,jdbcType=VARCHAR},
+      </if>
+      <if test="dx != null">
+        #{dx,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="sm != null">
+        #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="sx != null">
+        #{sx,jdbcType=VARCHAR},
+      </if>
+      <if test="ta != null">
+        #{ta,jdbcType=VARCHAR},
+      </if>
+      <if test="ua != null">
+        #{ua,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null">
+        #{pa,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mydemo.domain.WeatherInfo">
+    update t_weatherinfo
+    <set>
+      <if test="dn != null">
+        Dn = #{dn,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null">
+        Dm = #{dm,jdbcType=VARCHAR},
+      </if>
+      <if test="dx != null">
+        Dx = #{dx,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null">
+        Sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="sm != null">
+        Sm = #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="sx != null">
+        Sx = #{sx,jdbcType=VARCHAR},
+      </if>
+      <if test="ta != null">
+        Ta = #{ta,jdbcType=VARCHAR},
+      </if>
+      <if test="ua != null">
+        Ua = #{ua,jdbcType=VARCHAR},
+      </if>
+      <if test="pa != null">
+        Pa = #{pa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mydemo.domain.WeatherInfo">
+    update t_weatherinfo
+    set Dn = #{dn,jdbcType=VARCHAR},
+      Dm = #{dm,jdbcType=VARCHAR},
+      Dx = #{dx,jdbcType=VARCHAR},
+      Sn = #{sn,jdbcType=VARCHAR},
+      Sm = #{sm,jdbcType=VARCHAR},
+      Sx = #{sx,jdbcType=VARCHAR},
+      Ta = #{ta,jdbcType=VARCHAR},
+      Ua = #{ua,jdbcType=VARCHAR},
+      Pa = #{pa,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
